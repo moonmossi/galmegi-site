@@ -61,9 +61,11 @@
   }
   .save .btn.primary { background: #c8452f; border-color: #c8452f; color: #fff; font-weight: 600; }
   .save .btn.primary:hover { background: #d9503a; }
-  #status { font-size: 13px; color: #8b837a; }
+  .savemeta { min-width: 0; line-height: 1.45; }
+  #status { font-size: 13px; color: #8b837a; display: block; }
   #status.ok { color: #6fbf73; }
   #status.err { color: #e05b45; }
+  #folderName { font-size: 12px; color: #6b645c; display: block; }
   .blocked { padding: 40px; line-height: 1.8; }
   .blocked code { background: #232120; padding: 2px 6px; border-radius: 3px; }
 </style>
@@ -110,7 +112,10 @@
 <div class="save">
   <button class="btn primary" id="saveBtn">저장</button>
   <button class="btn" id="folderBtn">폴더 다시 고르기</button>
-  <span id="status"></span>
+  <div class="savemeta">
+    <span id="status"></span>
+    <span id="folderName"></span>
+  </div>
 </div>
 
 <script>
@@ -119,21 +124,41 @@ const media = [];            // {kind:'img'|'yt', name, blob, url, caption, byte
 let dirHandle = null;
 
 /* ── 저장 폴더 기억하기 (IndexedDB) ───────────────────── */
+/* 폴더를 기억하는 건 편의 기능일 뿐이다. 여기가 막히거나 느려도
+   저장 자체는 되어야 하므로, 실패하면 조용히 포기하고 넘어간다.
+   (시크릿 모드나 쿠키 차단 설정에서 IndexedDB 가 막히면 응답이 없다) */
 function db() {
   return new Promise((res, rej) => {
+    let done = false;
+    const fin = fn => v => { if (!done) { done = true; fn(v); } };
     const r = indexedDB.open('galmegi-write', 1);
     r.onupgradeneeded = () => r.result.createObjectStore('kv');
-    r.onsuccess = () => res(r.result);
-    r.onerror = () => rej(r.error);
+    r.onsuccess = () => fin(res)(r.result);
+    r.onerror   = () => fin(rej)(r.error);
+    r.onblocked = () => fin(rej)(new Error('blocked'));
+    setTimeout(() => fin(rej)(new Error('timeout')), 3000);
   });
 }
 async function kvSet(k, v) {
-  const d = await db();
-  return new Promise(res => { const t = d.transaction('kv', 'readwrite'); t.objectStore('kv').put(v, k); t.oncomplete = res; });
+  try {
+    const d = await db();
+    await new Promise((res, rej) => {
+      const t = d.transaction('kv', 'readwrite');
+      t.objectStore('kv').put(v, k);
+      t.oncomplete = res; t.onerror = () => rej(t.error); t.onabort = () => rej(t.error);
+    });
+  } catch { /* 다음에 폴더를 다시 물어볼 뿐이다 */ }
 }
 async function kvGet(k) {
-  const d = await db();
-  return new Promise(res => { const t = d.transaction('kv', 'readonly'); const q = t.objectStore('kv').get(k); q.onsuccess = () => res(q.result); });
+  try {
+    const d = await db();
+    return await new Promise((res, rej) => {
+      const t = d.transaction('kv', 'readonly');
+      const q = t.objectStore('kv').get(k);
+      q.onsuccess = () => res(q.result);
+      q.onerror = () => rej(q.error); t.onabort = () => rej(t.error);
+    });
+  } catch { return undefined; }
 }
 
 /* ── 유틸 ─────────────────────────────────────────────── */
@@ -261,23 +286,48 @@ $('#ytAdd').addEventListener('click', () => {
 function setStatus(msg, cls) { const el = $('#status'); el.textContent = msg; el.className = cls || ''; }
 
 /* ── 저장 ─────────────────────────────────────────────── */
-async function pickFolder() {
-  dirHandle = await window.showDirectoryPicker({ mode: 'readwrite' });
-  await kvSet('dir', dirHandle);
-  return dirHandle;
+
+/* 고른 폴더가 맞는 폴더인지(= devlog.html 이 있는지) 확인한다.
+   엉뚱한 폴더를 골랐을 때 저장 도중에 알 수 없는 말로 실패하지 않도록,
+   고르는 시점에 바로 잡아낸다. */
+async function hasDevlog(dir) {
+  try { await dir.getFileHandle('devlog.html'); return true; }
+  catch { return false; }
 }
+
+function showFolder(name) {
+  $('#folderName').textContent = name ? '저장 위치: ' + name : '저장 위치를 아직 안 골랐습니다';
+}
+
+async function pickFolder() {
+  const dir = await window.showDirectoryPicker({ mode: 'readwrite' });
+  if (!await hasDevlog(dir)) {
+    const e = new Error('"' + dir.name + '" 폴더에는 devlog.html 이 없습니다. ' +
+                        '홈페이지 파일들이 들어있는 galmegi-site 폴더를 골라주세요.');
+    e.friendly = true;
+    throw e;
+  }
+  dirHandle = dir;
+  await kvSet('dir', dir);
+  showFolder(dir.name);
+  return dir;
+}
+
 async function ensureFolder() {
   if (!dirHandle) dirHandle = await kvGet('dir');
   if (!dirHandle) return pickFolder();
   const opt = { mode: 'readwrite' };
-  if (await dirHandle.queryPermission(opt) === 'granted') return dirHandle;
-  if (await dirHandle.requestPermission(opt) === 'granted') return dirHandle;
-  return pickFolder();
+  let granted = await dirHandle.queryPermission(opt) === 'granted';
+  if (!granted) granted = await dirHandle.requestPermission(opt) === 'granted';
+  // 기억해둔 폴더가 지워졌거나 옮겨졌을 수도 있으니 매번 확인한다
+  if (!granted || !await hasDevlog(dirHandle)) { dirHandle = null; return pickFolder(); }
+  showFolder(dirHandle.name);
+  return dirHandle;
 }
 
 $('#folderBtn').addEventListener('click', async () => {
-  try { await pickFolder(); setStatus('폴더를 다시 지정했습니다.', 'ok'); }
-  catch (e) { setStatus('취소했습니다.'); }
+  try { await pickFolder(); setStatus('저장 위치를 지정했습니다.', 'ok'); }
+  catch (e) { setStatus(e.friendly ? e.message : '취소했습니다.', e.friendly ? 'err' : ''); }
 });
 
 $('#saveBtn').addEventListener('click', async () => {
@@ -309,7 +359,11 @@ $('#saveBtn').addEventListener('click', async () => {
 
     setStatus('저장했습니다. devlog.html 을 새로고침해보세요.', 'ok');
   } catch (e) {
-    setStatus(e.name === 'AbortError' ? '취소했습니다.' : '저장 실패: ' + e.message, 'err');
+    if (e.friendly)               setStatus(e.message, 'err');
+    else if (e.name === 'AbortError')   setStatus('취소했습니다. 저장되지 않았습니다.');
+    else if (e.name === 'NotAllowedError') setStatus('파일에 쓸 권한이 없습니다. [폴더 다시 고르기] 를 눌러 galmegi-site 폴더를 다시 골라주세요.', 'err');
+    else if (e.name === 'NotFoundError')   setStatus('파일을 찾지 못했습니다. 폴더가 옮겨졌을 수 있습니다. [폴더 다시 고르기] 를 눌러주세요.', 'err');
+    else setStatus('저장 실패: ' + e.message, 'err');
   }
 });
 
@@ -322,6 +376,8 @@ if (!window.showDirectoryPicker) {
 } else {
   $('#date').value = new Date().toLocaleDateString('sv-SE');  // YYYY-MM-DD (현지 날짜)
   render();
+  // 기억해둔 폴더가 있으면 이름만 띄워준다 (권한을 묻지는 않는다)
+  kvGet('dir').then(h => showFolder(h && h.name)).catch(() => showFolder(null));
 }
 </script>
 </body>
