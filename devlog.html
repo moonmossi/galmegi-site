@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>개발일지 — Galmegi</title>
+<meta name="description" content="Galmegi 개발일지.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<input type="checkbox" id="lang-en" hidden>
+<label for="lang-en" class="lang-toggle"><span class="ko">ENGLISH</span><span class="en">한국어</span></label>
+
+<div class="wrap">
+
+  <nav class="site-nav">
+    <span class="brand">GALMEGI</span>
+    <a href="index.html"><span class="ko">소개</span><span class="en">About</span></a>
+    <a href="devlog.html" aria-current="page"><span class="ko">개발일지</span><span class="en">Devlog</span></a>
+  </nav>
+
+  <section>
+    <h2><span class="ko">개발일지</span><span class="en">Devlog</span></h2>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         새 글 쓰는 법: 아래 블록을 복사해서 이 주석 바로 다음 줄에 붙여넣기.
+         (최신 글이 맨 위)
+
+    <article>
+      <time datetime="2026-00-00">2026.00.00</time>
+      <h2>
+        <span class="ko">한국어 제목</span>
+        <span class="en">English title</span>
+      </h2>
+      <p>본문. 문단이 여러 개면 &lt;p&gt; 를 반복.</p>
+      <figure>
+        <img src="img/파일이름.webp" alt="스크린샷 설명" loading="lazy">
+        <figcaption>캡션</figcaption>
+      </figure>
+    </article>
+
+         · 제목처럼 <span class="ko">…</span><span class="en">…</span> 를 나란히 두면
+           언어 모드에 따라 한쪽만 보인다.
+         · 본문 &lt;p&gt; 처럼 class 를 안 붙인 것은 두 모드 모두에서 그대로 보인다.
+           번역이 귀찮으면 영문 제목만 채우고 본문은 한국어로 두면 된다.
+         · 이미지는 긴 변 1600px / WebP 로 줄여서 img/ 에 넣을 것. 파일명은 영문으로.
+         ═══════════════════════════════════════════════════════════════ -->
+
+    <div class="devlog">
+
+      <!-- ⚠ 아래 세 글은 작업 기록에서 뽑은 초안입니다.
+           날짜와 내용을 확인·수정한 뒤 공개하세요. -->
+
+      <article>
+        <time datetime="2026-08-21">2026.08.21</time>
+        <h2>
+          <span class="ko">동료가 절벽에서 떨어지는 문제</span>
+          <span class="en">Allies walking off cliffs</span>
+        </h2>
+        <p>동료 NPC에 낙사 회피를 넣었습니다. 대형을 유지하며 따라올 때는 낭떠러지 앞에서 알아서 멈춥니다.</p>
+        <p>다만 오른쪽 버튼으로 직접 끌고 다니는 동안에는 회피가 걸리지 않습니다.
+           플레이어가 의도적으로 데려가는 위치를 AI가 거부하면 그게 더 답답해서, 이쪽은 일부러 남겨뒀습니다.</p>
+      </article>
+
+      <article>
+        <time datetime="2026-08-10">2026.08.10</time>
+        <h2>
+          <span class="ko">바다 레벨 로딩 시간 잡기</span>
+          <span class="en">Cutting the beach level load time</span>
+        </h2>
+        <p>바다 씬 진입에 1.5초가 걸리고 있었습니다. 범인은 시간대 리소스 하나가
+           쓰지도 않는 레벨 네 개를 통째로 끌고 오는 참조 구조였습니다.</p>
+        <p>레벨을 필요할 때만 불러오도록 참조를 끊었습니다.</p>
+      </article>
+
+      <article>
+        <time datetime="2026-07-28">2026.07.28</time>
+        <h2>
+          <span class="ko">에디터가 파도를 계속 계산하고 있었다</span>
+          <span class="en">The editor was simulating waves the whole time</span>
+        </h2>
+        <p>바다 씬을 열어두기만 해도 에디터가 느려지는 이유를 찾았습니다.
+           파도 시뮬레이션이 편집 중에도 매 프레임 돌고 있었습니다.</p>
+        <p>에디터에서는 돌지 않도록 가드를 넣으니 씬을 열어둔 채로 작업할 수 있게 됐습니다.</p>
+      </article>
+
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 ss · Galmegi</p>
+  </footer>
+
+</div>
+</body>
+</html>

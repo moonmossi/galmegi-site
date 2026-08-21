@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Galmegi / 갈매기</title>
+<meta name="description" content="부산 근교 가상도시 포산시를 배경으로 한 조직 액션 게임. 개발 중.">
+<meta property="og:title" content="Galmegi / 갈매기">
+<meta property="og:description" content="부산 근교 가상도시 포산시를 배경으로 한 조직 액션 게임. 개발 중.">
+<meta property="og:type" content="website">
+<!-- 대표 이미지가 정해지면 아래 주석을 풀고 파일명을 넣을 것 (SNS 공유 썸네일)
+<meta property="og:image" content="https://moonmossi.github.io/galmegi/img/hero.webp"> -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- 한/영 전환. 스크립트 없이 체크박스 + CSS 로만 동작한다. -->
+<input type="checkbox" id="lang-en" hidden>
+<label for="lang-en" class="lang-toggle"><span class="ko">ENGLISH</span><span class="en">한국어</span></label>
+
+<div class="wrap">
+
+  <nav class="site-nav">
+    <span class="brand">GALMEGI</span>
+    <a href="index.html" aria-current="page"><span class="ko">소개</span><span class="en">About</span></a>
+    <a href="devlog.html"><span class="ko">개발일지</span><span class="en">Devlog</span></a>
+  </nav>
+
+  <header class="hero">
+    <h1>갈매기</h1>
+    <p class="sub">G A L M E G I</p>
+
+    <!-- 로그라인 초안. 문구는 다듬어 쓸 것. -->
+    <p class="logline">
+      <span class="ko">부산 근교 포산시. 조직 3년차 행동대장, 강태보의 이야기.</span>
+      <span class="en">Pusan City, on the outskirts of Busan. Three years in the organization — the story of Taebo Kang.</span>
+    </p>
+
+    <p class="status">
+      <span class="ko">개발 중 · 데모 준비</span>
+      <span class="en">In development · demo in progress</span>
+    </p>
+  </header>
+
+  <!-- ══ 소개 ══════════════════════════════════════════
+       아래 본문은 Story_ideation.md 에서 뽑은 초안이다.
+       공개 전에 반드시 직접 다듬을 것. -->
+  <section>
+    <h2><span class="ko">소개</span><span class="en">About</span></h2>
+
+    <p>
+      <span class="ko"><strong>갈매기</strong>는 부산 근교의 가상도시 <strong>포산시</strong>를 배경으로 한 3인칭 액션 게임입니다.
+        플레이어는 조직 3년차 행동대장 강태보가 되어, 재개발 펜스가 쳐지기 시작한 부청마을에서
+        수금과 다툼과 뒤처리를 반복합니다.</span>
+      <span class="en"><strong>Galmegi</strong> is a third-person action game set in Pusan City, a fictional town
+        on the outskirts of Busan. You play as Taebo Kang, three years into the organization, working
+        collections and cleanup in Bucheong Village as the redevelopment fences go up.</span>
+    </p>
+
+    <p>
+      <span class="ko">마을에서 시작한 여정은 안마의거리, 번화가, 시청, 발전소를 거쳐 교회 지하실에 닿습니다.
+        조직의 선배들과 후배들, 전단지를 돌리는 권사, 길에서 노숙하는 전직 복싱 챔피언까지 —
+        포산시의 사람들은 저마다의 사정으로 이 길 위에 서 있습니다.</span>
+      <span class="en">The journey runs from the village through the massage district, the downtown strip,
+        city hall and the power plant, ending in a church basement. The people of Pusan City — seniors and
+        juniors in the crew, a deaconess handing out flyers, a former boxing champion sleeping rough —
+        each stand on that road for their own reasons.</span>
+    </p>
+
+    <p>
+      <span class="ko">1인 개발 중이며, 데모 버전은 부청마을과 609 안마의거리, 부청1가 스튜디오를 중심으로 준비하고 있습니다.</span>
+      <span class="en">Solo-developed. The demo build centers on Bucheong Village, the 609 massage district,
+        and the Bucheong 1-ga studio.</span>
+    </p>
+  </section>
+
+  <!-- ══ 특징 ══════════════════════════════════════════
+       실제로 구현된 것만 적을 것. 없는 기능은 넣지 않는다. -->
+  <section>
+    <h2><span class="ko">특징</span><span class="en">Features</span></h2>
+    <ul class="features">
+      <li>
+        <h3><span class="ko">락온 근접 전투</span><span class="en">Lock-on melee</span></h3>
+        <p><span class="ko">한 명을 붙잡고 끝을 보는 듀얼 구조. 붙었다 떨어지는 거리 싸움과 타이밍이 중심입니다.</span>
+           <span class="en">Duel-focused combat that commits you to one opponent at a time — spacing and timing over crowd control.</span></p>
+      </li>
+      <li>
+        <h3><span class="ko">동료 지휘</span><span class="en">Crew command</span></h3>
+        <p><span class="ko">부하들을 데리고 다니며 대형을 잡고, 필요할 때 직접 끌어다 붙입니다.</span>
+           <span class="en">Bring your crew along, hold formation, and drag them into position when it matters.</span></p>
+      </li>
+      <li>
+        <h3><span class="ko">부산 사투리 시나리오</span><span class="en">Busan dialect script</span></h3>
+        <p><span class="ko">컷신과 전투 중 대사가 전부 경상도 말입니다. 번역보다 억양이 먼저인 대본.</span>
+           <span class="en">Cutscenes and combat barks are written in Gyeongsang dialect — cadence first, translation second.</span></p>
+      </li>
+      <li>
+        <h3><span class="ko">'가오' 수치</span><span class="en">"Gao" (face) meter</span></h3>
+        <p><span class="ko">체면. 참느냐 밟느냐에 따라 오르내리고, 주변이 당신을 대하는 방식이 달라집니다.</span>
+           <span class="en">Standing. It rises and falls with whether you let things slide — and changes how the street treats you.</span></p>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ══ 스크린샷 ══════════════════════════════════════
+       실제 이미지를 넣을 때: 아래 <li class="slot"> 를 이 형태로 교체.
+       <li><a href="img/파일.webp"><img src="img/파일.webp" alt="설명" loading="lazy"></a></li>
+       원본은 ...\Desktop\Godot\스크린샷\ 에 있고, 긴 변 1600px / WebP 로 변환해 img/ 에 넣을 것. -->
+  <section>
+    <h2><span class="ko">스크린샷</span><span class="en">Screenshots</span></h2>
+    <ul class="shots">
+      <li class="slot">이미지 자리 1</li>
+      <li class="slot">이미지 자리 2</li>
+      <li class="slot">이미지 자리 3</li>
+      <li class="slot">이미지 자리 4</li>
+      <li class="slot">이미지 자리 5</li>
+      <li class="slot">이미지 자리 6</li>
+    </ul>
+  </section>
+
+  <!-- ══ 링크 ══════════════════════════════════════════
+       정해지면 <span class="pending"> 을 <a href="..."> 로 교체.
+       빈 링크(href="#")는 두지 말 것. -->
+  <section>
+    <h2><span class="ko">링크</span><span class="en">Links</span></h2>
+    <ul class="links">
+      <li>
+        <span class="label">DOWNLOAD</span>
+        <span class="pending"><span class="ko">데모 준비 중</span><span class="en">Demo in progress</span></span>
+      </li>
+      <li>
+        <span class="label">ITCH.IO</span>
+        <span class="pending"><span class="ko">준비 중</span><span class="en">Coming soon</span></span>
+      </li>
+      <li>
+        <span class="label">STEAM</span>
+        <span class="pending"><span class="ko">준비 중</span><span class="en">Coming soon</span></span>
+      </li>
+      <li>
+        <span class="label">YOUTUBE</span>
+        <span class="pending"><span class="ko">준비 중</span><span class="en">Coming soon</span></span>
+      </li>
+    </ul>
+  </section>
+
+  <footer>
+    <p class="notice">
+      <span class="ko">이 게임에는 폭력적인 묘사와 거친 표현, 성인 소재가 포함되어 있습니다.</span>
+      <span class="en">This game contains graphic violence, strong language, and adult themes.</span>
+    </p>
+    <p>© 2026 ss · Galmegi</p>
+  </footer>
+
+</div>
+</body>
+</html>
