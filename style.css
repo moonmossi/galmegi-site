@@ -241,6 +241,11 @@ footer {
   /* 링크 라벨/값을 두 줄로 */
   .links li { flex-direction: column; gap: 2px; }
   .links .label { flex: none; }
-  /* 고정된 언어 토글이 내비 링크를 덮지 않도록 자리를 비워둔다 */
-  .site-nav { padding-right: 104px; }
+}
+
+/* 언어 토글은 화면 오른쪽에 고정돼 있다. 화면이 좁아져 본문 영역이
+   토글 자리까지 밀려오면 내비 링크가 그 밑에 깔리므로 자리를 비워둔다.
+   860(본문) + 48(좌우 여백) + 210(토글 양쪽) ≈ 1120px 아래부터 겹친다. */
+@media (max-width: 1120px) {
+  .site-nav { padding-right: 112px; }
 }
