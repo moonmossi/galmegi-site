@@ -250,3 +250,7 @@ footer {
 @media (max-width: 1120px) {
   .site-nav { padding-right: 112px; }
 }
+
+/* 외부 사이트 링크 아이콘 */
+.links .label { display: inline-flex; align-items: center; gap: 10px; }
+.link-icon { flex: 0 0 22px; }
