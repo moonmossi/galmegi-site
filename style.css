@@ -79,6 +79,7 @@ p { margin: 0 0 1.1em; }
 /* ── 사이트 헤더 / 내비 ─────────────────────────────── */
 .site-nav {
   display: flex;
+  flex-wrap: wrap;
   gap: 22px;
   align-items: baseline;
   padding: 20px 0;
@@ -86,7 +87,7 @@ p { margin: 0 0 1.1em; }
   letter-spacing: .04em;
 }
 .site-nav .brand { font-weight: 700; letter-spacing: .1em; margin-right: auto; }
-.site-nav a { color: var(--text-dim); text-decoration: none; }
+.site-nav a { white-space: nowrap; color: var(--text-dim); text-decoration: none; }
 .site-nav a:hover, .site-nav a[aria-current="page"] { color: var(--text); }
 
 /* ── 히어로 ─────────────────────────────────────────── */
