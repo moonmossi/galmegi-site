@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Benchmark — Galmegi</title>
+  <meta name="description" content="갈매기 물리 실험을 브라우저에서 실행하고 터치 조작과 FPS를 확인하세요.">
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .benchmark-title { padding: 64px 0 32px; }
+    .benchmark-title h1 { margin-bottom: 16px; }
+    .test-card { border: 1px solid var(--line); background: var(--bg-raised); padding: 28px; margin-bottom: 48px; }
+    .test-card h2 { font-size: 24px; letter-spacing: 0; text-transform: none; }
+    .launch { display: inline-block; padding: 12px 22px; background: var(--accent); color: #fff; text-decoration: none; border-radius: 4px; }
+    .note { color: var(--text-dim); font-size: 14px; }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <nav class="site-nav">
+    <a class="brand" href="../index.html">GALMEGI</a>
+    <a href="../index.html">소개</a>
+    <a href="../devlog.html">개발일지</a>
+    <a href="../dev/index.html">개발 상세</a>
+    <a href="index.html" aria-current="page">Benchmark</a>
+  </nav>
+  <main>
+    <header class="benchmark-title">
+      <h1>Benchmark</h1>
+      <p>개발 중인 물리 실험을 브라우저에서 직접 조작해 보세요.</p>
+    </header>
+    <article class="test-card">
+      <h2>Female Soft Mass</h2>
+      <p>캐릭터의 국소 탄성·연결 질량 실험입니다. 걷기·달리기·춤을 바꾸고, 모델을 잡아당기거나 충격을 주며 움직임을 확인할 수 있습니다.</p>
+      <p><a class="launch" href="soft-mass-js/index.html">JavaScript 터치 벤치마크 실행 →</a></p>
+      <p class="note">약 5.6 MiB의 웹 파일입니다. 원본 메시, 1024×1024 텍스처와 네 애니메이션을 유지했습니다. 압축 전 파일 크기이며 실제 전송량은 다를 수 있습니다.</p>
+      <h3>조작</h3>
+      <ul>
+        <li>화면 버튼: 동작, 재생·일시정지, 충격, 복원, 탄성, 관성</li>
+        <li>한 손가락: 모델 잡기. 빈 공간 또는 카메라 모드에서는 회전</li>
+        <li>두 손가락: 확대·축소</li>
+        <li>PC: 좌드래그로 잡기, 우드래그·휠로 카메라 조작</li>
+      </ul>
+      <h3>FPS 확인</h3>
+      <p>실행 화면 왼쪽 위에 현재 FPS가 표시됩니다. 같은 동작과 화면 크기로 비교하세요. 화면 주사율, 브라우저, 기기 상태에 따라 값이 달라집니다.</p>
+      <p class="note">JavaScript/WebGL로 옮긴 캐릭터 한 명의 독립 실험입니다. Godot 게임이나 도시·군중의 성능을 대표하는 점수는 아닙니다. WebGL 2를 지원하는 브라우저가 필요합니다.</p>
+    </article>
+  </main>
+</div>
+</body>
+</html>
