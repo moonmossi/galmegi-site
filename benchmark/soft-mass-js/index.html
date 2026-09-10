@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Soft Mass · JavaScript Benchmark</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#20242b;color:#f2f2f2;font:15px system-ui,sans-serif;overflow:hidden}canvas{display:block;width:100vw;height:100dvh;touch-action:none}header{position:fixed;top:max(12px,env(safe-area-inset-top));left:16px;pointer-events:none}h1{font-size:16px;margin:0 0 6px}#status{font-variant-numeric:tabular-nums;font-size:14px}.back{position:fixed;right:12px;top:max(12px,env(safe-area-inset-top));color:#ddd;background:#20242be0;padding:10px;text-decoration:none;border-radius:5px}#controls{position:fixed;bottom:0;left:0;right:0;padding:10px 12px max(10px,env(safe-area-inset-bottom));background:#171a1ee8;display:flex;gap:6px;flex-wrap:wrap}button{min-width:64px;min-height:46px;border:1px solid #42464d;background:#292e35;color:inherit;border-radius:6px;font:inherit;padding:9px 12px;touch-action:manipulation}button[aria-pressed=true]{border-color:#efa38a;background:#59392f}button:focus-visible,a:focus-visible{outline:2px solid #efa38a}small{width:100%;font-size:12px;color:#b9bec6}#loading{position:fixed;inset:40% 16px auto;text-align:center;background:#20242bee;padding:24px}#loading[hidden]{display:none}@media(max-width:480px){.back{font-size:12px;padding:8px}header{max-width:74%}#status{font-size:12px}button{font-size:14px;min-width:60px;padding:8px}}
+</style>
+<script type="importmap">{"imports":{"three":"./vendor/three.module.min.js"}}</script>
+<canvas aria-label="터치로 조작하는 캐릭터 물리 실험"></canvas>
+<header><h1>Female Soft Mass · JS</h1><div id="status">준비 중</div></header>
+<a class="back" href="../">← 목록</a>
+<div id="loading" role="status">모델과 애니메이션을 불러오는 중…</div>
+<div id="controls" inert>
+  <button data-motion="0">정지</button><button data-motion="1">대기</button><button data-motion="2">걷기</button><button data-motion="3">달리기</button><button data-motion="4">춤</button>
+  <button data-action="pause">일시정지</button><button data-action="impulse">충격</button><button data-action="reset">복원</button><button data-action="mode">잡기 모드</button>
+  <button data-profile="0">부드러움</button><button data-profile="1">중간</button><button data-profile="2">단단함</button><button data-action="inertia">관성</button>
+  <small>한 손가락: 잡기/회전 · 두 손가락: 확대/축소 · PC: 좌/우 드래그·휠</small>
+</div>
+<script type="module" src="./app.js"></script>
+</html>

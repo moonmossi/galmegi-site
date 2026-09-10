@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>개발일지 — Galmegi</title>
+<meta name="description" content="Galmegi 개발일지.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<input type="checkbox" id="lang-en" hidden>
+<label for="lang-en" class="lang-toggle"><span class="ko">ENGLISH</span><span class="en">한국어</span></label>
+
+<div class="wrap">
+
+  <nav class="site-nav">
+    <span class="brand">GALMEGI</span>
+    <a href="index.html"><span class="ko">소개</span><span class="en">About</span></a>
+    <a href="devlog.html" aria-current="page"><span class="ko">개발일지</span><span class="en">Devlog</span></a>
+    <a href="gi-comparison/index.html"><span class="ko">GI 비교</span><span class="en">GI Comparison</span></a>
+    <a href="benchmark/index.html"><span class="ko">벤치마크</span><span class="en">Benchmark</span></a>
+  </nav>
+
+  <section>
+    <h2><span class="ko">개발일지</span><span class="en">Devlog</span></h2>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         새 글 쓰는 법: 아래 블록을 복사해서 이 주석 바로 다음 줄에 붙여넣기.
+         (최신 글이 맨 위)
+
+    <article>
+      <time datetime="2026-00-00">2026.00.00</time>
+      <h2>
+        <span class="ko">한국어 제목</span>
+        <span class="en">English title</span>
+      </h2>
+      <p>본문. 문단이 여러 개면 &lt;p&gt; 를 반복.</p>
+      <figure>
+        <img src="img/파일이름.webp" alt="스크린샷 설명" loading="lazy">
+        <figcaption>캡션</figcaption>
+      </figure>
+    </article>
+
+         · 제목처럼 <span class="ko">…</span><span class="en">…</span> 를 나란히 두면
+           언어 모드에 따라 한쪽만 보인다.
+         · 본문 &lt;p&gt; 처럼 class 를 안 붙인 것은 두 모드 모두에서 그대로 보인다.
+           번역이 귀찮으면 영문 제목만 채우고 본문은 한국어로 두면 된다.
+         · 이미지는 긴 변 1600px / WebP 로 줄여서 img/ 에 넣을 것. 파일명은 영문으로.
+         ═══════════════════════════════════════════════════════════════ -->
+
+    <div class="devlog">
+
+      <article>
+        <time datetime="2026-09-09">2026.09.09</time>
+        <h2>
+        GPT 아스트라 등장, 1인 인디게임 개발의 혁명
+        </h2>
+      <p>부산 토박이 우당탕탕 액션 갈매기를 개발한 지 어언 반년이 되었습니다. <br>초여름에 권유를 받아 바이브코딩을 시작했는데, 사실 활용이 어려웠던 것이 사실입니다.<br>초심자일수록 통제 가능한 범위가 좁고, ai가 쓴 코드는 아예 구조조차 파악하기 힘들었기 때문입니다. <br>때문에 개발속도가 오히려 꺾이기도 하고, 완전히 멘붕해버려 아트 작업에만 몰두하기도 했습니다.<br>거기에 서서히 익숙해질 무렵 아스트라를 사용할 수 있게 되었네요.<br>사실 예상했던 것보다 훨씬 탁월한 능력을, 초심자에게도 완전히 컨트롤할 수 있도록 도와주는 것 같습니다. <br>개인적으로 1인 개발하면서 가장 괴로웠던 부분은 툴을 만드는 것이었는데요.<br>플러그인, 애드온부터 시작해 맵이나 시퀀스를 자동화하고 파이프라인을 꾸리는 것에 데이터를 추적해 관리하거나, 코드로 그런 '지도'를 쌓아가는 것이 너무도 버겁게 느껴졌습니다.<br>하지만.. 추론 능력이 뛰어난 ai는 확실히 다르네요.<br>애드온을 전전하며 맘에 드는 효과를 내기가 불가능에 가까워 보였던 도로 자동화 툴이나, 전투를 반복 학습시켜서 적 ai를 업데이트하는 기능 등<br>그야말로 글로 적기만 하면 5분만에 새로운 툴을 만들어 주니 개발에 탄력이 붙습니다.<br>모델링도 확실한 개선이 느껴집니다.<br>특히 기존 meshyai나 huanyuan 같은 툴에서  속이 꽉 찬 (..) 50만 버텍스 모델을 들고 멘붕해보신 분들이라면, 아스트라가 얼마나 게임 친화적인 로우 폴리 모델을 뽑는지 체감하실 수 있다고 생각합니다.<br>이런.<br>말투가 왠지 약파는 사람처럼 되버렸네요.<br>존댓말로 쓰니 왠지 더 어색한 문장이 이어집니다. 어디선가 본 말투같달까요(웃음)<br>어쨋든,  ai 칼럼니스트가 아니고 게임 만들려고 용쓰는 입장이니, 작업 내용을 남깁니다.</p>
+      <p>- 전투·NPC·도플갱어 정책과 전투 테스트 환경 추가 및 변경<br>- 불·연기·비·수면 VFX와 관련 재질·셰이더 변경, 검증 도구 추가<br>- 카메라·애니메이션·군중 처리 및 관련 검증 코드 변경<br>- 레벨·환경 에셋 변경과 도로 편집 애드온 추가<br>- 프로젝트 구조 문서와 관련 작업 문서 갱신</p>
+      <p>역시나 문제는 재미 요소인데요.<br>이 게임의 재미는 물론 액션으로 뒷바침되어야겠지만,<br>반복적인 전투를 수행하는 비뎀업으로 그 탄력을 계속 이어나가는 것은 제 역량으론 무리라고 생각됩니다.<br>대신 스스로 잘할 수 있다고 생각되는 분위기, 장소의 현장감을 연구하고 있습니다.<br>모션, 색감, 환경음, 이런 감각적인 요소들 말이죠.<br>그런 것들을 특출나게 잘하는 게임들이 가끔 보이는데,<br>개인적으로 그런 대리체험 혹은 몰입 가능한 세계로서, 게임을 가장 즐기는 것 같습니다.<br>글이 너무 길어졌네요. 그럼 다음에 또...</p>
+      <figure>
+        <img src="img/2026-09-09-1.webp" alt="GPT 아스트라 등장, 1인 인디게임 개발의 혁명" loading="lazy">
+      </figure>
+      <figure>
+        <img src="img/2026-09-09-2.webp" alt="GPT 아스트라 등장, 1인 인디게임 개발의 혁명" loading="lazy">
+      </figure>
+      <figure>
+        <img src="img/2026-09-09-3.webp" alt="GPT 아스트라 등장, 1인 인디게임 개발의 혁명" loading="lazy">
+      </figure>
+      <figure>
+        <img src="img/2026-09-09-4.webp" alt="GPT 아스트라 등장, 1인 인디게임 개발의 혁명" loading="lazy">
+      </figure>
+      <figure>
+        <img src="img/2026-09-09-5.webp" alt="GPT 아스트라 등장, 1인 인디게임 개발의 혁명" loading="lazy">
+      </figure>
+      <figure>
+        <img src="img/2026-09-09-6.webp" alt="GPT 아스트라 등장, 1인 인디게임 개발의 혁명" loading="lazy">
+      </figure>
+      <figure>
+        <img src="img/2026-09-09-7.webp" alt="GPT 아스트라 등장, 1인 인디게임 개발의 혁명" loading="lazy">
+      </figure>
+      <figure>
+        <img src="img/2026-09-09-8.webp" alt="GPT 아스트라 등장, 1인 인디게임 개발의 혁명" loading="lazy">
+      </figure>
+      <figure>
+        <img src="img/2026-09-09-9.webp" alt="GPT 아스트라 등장, 1인 인디게임 개발의 혁명" loading="lazy">
+      </figure>
+      </article>
+
+
+      <article>
+        <time datetime="2026-08-21">2026.08.21</time>
+        <h2>
+        갈메기 사이트 개설
+        </h2>
+      <p>인디 게임 개발을 시작한 지도 벌써 1년여가 되었습니다.<br>애지중지 길러오던 [한국형 누아르 액션 갈메기]도 슬슬 게임같은 모양새가 되어가고 있기 때문에!!<br>재미있는 일들도 많이 생기고 남기고 싶은 일들도 많습니다.<br>매일의 작업에 의미를 더하고 또 루틴으로 잘 보관해보고자,<br>독립된 사이트를 개설하여 운영하고자 합니다.<br>아직 열심히 개발중이기 때문에 내용도 두서없고 아마 실없는 내용이 대다수일거라고 예상합니다만,<br>그럼에도 함께 즐겨주시면 더할 나위 없이 기쁠 것입니다.<br>그럼 잘 부탁드립니다.</p>
+      <figure>
+        <img src="img/2026-08-21-1.webp" alt="갈메기 사이트 개설" loading="lazy">
+      </figure>
+      <figure>
+        <div class="embed"><iframe src="https://www.youtube.com/embed/ZchlkiMshSw" title="YouTube" allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+      </figure>
+      </article>
+
+
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 ss · Galmegi</p>
+  </footer>
+
+</div>
+</body>
+</html>

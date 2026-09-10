@@ -1,0 +1,92 @@
+{
+	"animations": [
+		{
+			"duration": 11.333333,
+			"keys": 117134,
+			"name": "act_dance_janky_rig",
+			"tracks": 174
+		},
+		{
+			"duration": 6.9166665,
+			"keys": 71139,
+			"name": "move_field_idle_feminine_LOOP_rig",
+			"tracks": 174
+		},
+		{
+			"duration": 0.75,
+			"keys": 7869,
+			"name": "move_run_feminine_LOOP_rig",
+			"tracks": 174
+		},
+		{
+			"duration": 3.7,
+			"keys": 38136,
+			"name": "move_walk_swinging_LOOP_rig",
+			"tracks": 174
+		}
+	],
+	"materials": {
+		"EYES_002_0": {
+			"cuts": 4,
+			"height": 1024,
+			"saturation": 0.70000003325,
+			"steepness": 4.0000001425,
+			"width": 1024
+		},
+		"Retopo_node_0_001_0": {
+			"cuts": 4,
+			"height": 1024,
+			"saturation": 0.70000003325,
+			"steepness": 4.0000001425,
+			"width": 1024
+		},
+		"Retopo_node_0_002_0": {
+			"cuts": 4,
+			"height": 1024,
+			"saturation": 0.70000003325,
+			"steepness": 4.0000001425,
+			"width": 1024
+		},
+		"hair2_001_0": {
+			"cuts": 4,
+			"height": 1024,
+			"saturation": 0.70000003325,
+			"steepness": 4.0000001425,
+			"width": 1024
+		},
+		"hair_front_001_0": {
+			"cuts": 4,
+			"height": 1024,
+			"saturation": 0.70000003325,
+			"steepness": 4.0000001425,
+			"width": 1024
+		}
+	},
+	"meshes": [
+		{
+			"indices": 5952,
+			"name": "EYES_002",
+			"vertices": 3974
+		},
+		{
+			"indices": 282,
+			"name": "hair_front_001",
+			"vertices": 110
+		},
+		{
+			"indices": 4008,
+			"name": "hair2_001",
+			"vertices": 1763
+		},
+		{
+			"indices": 22674,
+			"name": "Retopo_node_0_001",
+			"vertices": 10709
+		},
+		{
+			"indices": 2226,
+			"name": "Retopo_node_0_002",
+			"vertices": 984
+		}
+	]
+}
