@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>빠른 커스텀 GI 비교</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#111719;color:#edf2ef;font:16px/1.6 system-ui}main{max-width:1320px;margin:auto;padding:24px}h1{margin:0;font-size:30px}p{color:#b6c7c0}nav{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0}button{background:#263732;color:#edf2ef;border:1px solid #64776e;padding:10px;cursor:pointer;border-radius:6px}button[aria-pressed=true]{background:#c9edda;color:#13231b}.labels{display:flex;justify-content:space-between}.frame{position:relative;aspect-ratio:1280/900}.frame img{position:absolute;width:100%;height:100%}#right{clip-path:inset(0 0 0 50%)}input{width:100%;accent-color:#c9edda}a{color:#c9edda}
+</style>
+<main><h1>해상도는 낮추고, 얼룩은 지웠습니다.</h1>
+<p>실내 67개 메시 · 베이크부터 적용까지 <strong>70초</strong><br>라이트맵 210,080 → 69,696픽셀 · 샘플 256 → 32</p>
+<nav><button data-mode="previous" aria-pressed="true">이전 결과와 비교</button><button data-mode="raw" aria-pressed="false">디노이즈 효과</button><button data-mode="indirect" aria-pressed="false">간접광만</button><button data-mode="cycles" aria-pressed="false">Cycles 원본과 비교</button></nav>
+<div class="labels"><span id="ll">이전 · 256샘플 / 0.065m</span><span id="rl">빠른 GI · 32샘플 / 0.3m + 디노이즈</span></div>
+<div class="frame"><img id="left" src="../interior/godot_full.png" alt="이전 결과"><img id="right" src="denoised_full.png" alt="빠른 GI 결과"></div>
+<input id="split" type="range" min="0" max="100" value="50" aria-label="비교 경계">
+<p id="note">벽과 천장의 거친 얼룩은 줄었지만 작은 명암은 부드러워집니다.</p>
+<p>화면 해상도는 모두 1280×900입니다. 낮춘 것은 간접광을 저장하는 라이트맵 해상도입니다.<br>정적 베이크 38.5초 · 디노이즈 16.2초. 이전 실행의 전체 시간은 측정하지 않아 속도 배수는 비교하지 않았습니다.</p>
+<a href="REPORT.md">검증 기록</a> · <a href="metrics.json">실측값</a></main>
+<script>
+const modes={
+previous:['../interior/godot_full.png','denoised_full.png','이전 · 256샘플 / 0.065m','빠른 GI · 32샘플 / 0.3m + 디노이즈','벽과 천장의 거친 얼룩은 줄었지만 작은 명암은 부드러워집니다.'],
+raw:['raw_full.png','denoised_full.png','32샘플 · 디노이즈 전','32샘플 · 디노이즈 후','동일한 저해상도 베이크의 전후입니다. 낮은 샘플 수에서 생긴 큰 얼룩을 디노이즈가 줄입니다.'],
+indirect:['raw_indirect.png','denoised_indirect.png','간접광 · 디노이즈 전','간접광 · 디노이즈 후','직접광을 꺼서 구운 간접광만 비교합니다. 작은 접촉부와 국소 명암의 뭉개짐도 확인하세요.'],
+cycles:['../interior/cycles_full.png','denoised_full.png','Cycles · 512샘플 원본 렌더','Godot · 빠른 커스텀 GI','같은 방과 카메라입니다. 직접광과 그림자는 각 엔진이 계산하며, Godot에는 구운 간접광을 적용했습니다.']};
+const left=document.querySelector('#left'),right=document.querySelector('#right'),split=document.querySelector('#split');
+document.querySelectorAll('button').forEach(b=>b.onclick=()=>{const m=modes[b.dataset.mode];left.src=m[0];right.src=m[1];left.alt=document.querySelector('#ll').textContent=m[2];right.alt=document.querySelector('#rl').textContent=m[3];document.querySelector('#note').textContent=m[4];document.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));});
+split.oninput=()=>right.style.clipPath='inset(0 0 0 '+split.value+'%)';
+</script></html>

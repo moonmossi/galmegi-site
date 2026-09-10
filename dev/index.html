@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>개발 상세 — Galmegi</title>
+<meta name="description" content="Galmegi 개발 과정에서 만든 검증·비교 자료 모음.">
+<link rel="stylesheet" href="../style.css">
+<style>
+/* 이 페이지는 비교 자료를 넓게 띄워야 해서 공용 .wrap(860px)을 쓰지 않는다. */
+.lab-wrap { max-width: 1500px; margin: 0 auto; padding: 0 24px; }
+
+.lab-head { padding: 34px 0 26px; }
+.lab-head h1 { margin: 0 0 6px; font-size: 26px; }
+.lab-head p { margin: 0; color: var(--text-dim); font-size: 15px; }
+
+/* 목록(왼쪽) + 본문(오른쪽) */
+.lab { display: grid; grid-template-columns: 268px 1fr; gap: 22px; padding-bottom: 40px; }
+
+.lab-list { align-self: start; position: sticky; top: 20px; }
+.lab-group {
+  margin: 0 0 8px; padding-left: 2px;
+  font-size: 12px; letter-spacing: .12em; color: var(--text-dim);
+}
+.lab-group + .lab-group { margin-top: 22px; }
+.lab-list a {
+  display: block; padding: 11px 14px; margin-bottom: 6px;
+  border: 1px solid var(--line); border-left: 3px solid transparent; border-radius: 4px;
+  background: var(--bg-raised); text-decoration: none; line-height: 1.45;
+}
+.lab-list a:hover { border-color: var(--accent-dim); border-left-color: var(--accent-dim); }
+.lab-list a[aria-current="true"] { border-left-color: var(--accent); background: #1d1a17; }
+.lab-list .t { display: block; font-size: 15px; font-weight: 600; }
+.lab-list .d { display: block; font-size: 12.5px; color: var(--text-dim); }
+
+.lab-view { min-width: 0; }
+.lab-bar {
+  display: flex; align-items: baseline; gap: 16px;
+  padding: 0 2px 10px;
+  font-size: 13px; color: var(--text-dim);
+}
+.lab-bar .now { margin-right: auto; color: var(--text); font-size: 15px; font-weight: 600; }
+.lab-bar a { white-space: nowrap; }
+.lab-view iframe {
+  display: block; width: 100%; height: calc(100vh - 210px); min-height: 540px;
+  border: 1px solid var(--line); border-radius: 6px; background: #101217;
+}
+
+/* JS가 없으면 목록이 그냥 링크 모음으로 동작한다. */
+.no-js .lab { grid-template-columns: 1fr; }
+.no-js .lab-view { display: none; }
+
+@media (max-width: 900px) {
+  .lab { grid-template-columns: 1fr; }
+  .lab-list { position: static; }
+  .lab-view iframe { height: 72vh; min-height: 420px; }
+}
+@media (max-width: 1120px) {
+  .lab-head { padding-top: 20px; }
+}
+</style>
+</head>
+<body class="no-js">
+
+<div class="lab-wrap">
+
+  <nav class="site-nav">
+    <span class="brand">GALMEGI</span>
+    <a href="../index.html"><span class="ko">소개</span><span class="en">About</span></a>
+    <a href="../devlog.html"><span class="ko">개발일지</span><span class="en">Devlog</span></a>
+    <a href="index.html" aria-current="page"><span class="ko">개발 상세</span><span class="en">Dev Details</span></a>
+  </nav>
+
+  <div class="lab-head">
+    <h1>개발 상세</h1>
+    <p>개발 중에 만든 검증·비교 자료입니다. 목록에서 고르면 오른쪽에 열립니다. 자료는 한국어로만 작성돼 있습니다.</p>
+  </div>
+
+  <div class="lab">
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         자료 추가하는 법: 이 목록 안에 아래 블록을 붙여넣으면 끝.
+         JS가 <a> 를 자동으로 훑으므로 스크립트는 고칠 필요가 없다.
+
+           <a id="영문이름" href="경로" data-src="경로">
+             <span class="t">제목</span>
+             <span class="d">한 줄 설명</span>
+           </a>
+
+         · href 와 data-src 에 같은 값을 넣는다.
+           href 는 JS가 없을 때, data-src 는 오른쪽에 띄울 때 쓴다.
+         · 경로는 이 파일(dev/index.html) 기준 상대경로.
+         · id 는 주소 끝에 #영문이름 으로 붙어 링크 공유에 쓰인다.
+         · 새 분류를 만들려면 <p class="lab-group">분류명</p> 을 앞에 둔다.
+         · 끼워 넣는 페이지가 자체 사이트 메뉴를 갖고 있으면
+           그 페이지에서 self!==top 일 때 메뉴를 숨겨야 액자 속 액자가 안 된다.
+           (gi-comparison/index.html 맨 아래 참고)
+         ═══════════════════════════════════════════════════════════════ -->
+    <nav class="lab-list" id="list" aria-label="자료 목록">
+
+      <p class="lab-group">엔진 내장 GI</p>
+      <a id="engine" href="../gi-comparison/index.html" data-src="../gi-comparison/index.html">
+        <span class="t">GI 시각 비교</span>
+        <span class="d">Metro / City · 5가지 구성을 실제 캡처로</span>
+      </a>
+
+      <p class="lab-group">커스텀 GI — Cycles 베이크</p>
+      <a id="demo" href="gi/demo/compare.html" data-src="gi/demo/compare.html">
+        <span class="t">개념 검증</span>
+        <span class="d">작은 씬에서 버튼 한 번으로 굽기</span>
+      </a>
+      <a id="interior" href="gi/interior/compare.html" data-src="gi/interior/compare.html">
+        <span class="t">실내 · Cycles 원본 비교</span>
+        <span class="d">같은 방을 원본 렌더와 나란히</span>
+      </a>
+      <a id="fast" href="gi/fast/compare.html" data-src="gi/fast/compare.html">
+        <span class="t">빠른 베이크</span>
+        <span class="d">해상도·샘플을 낮추고 디노이즈 · 70초</span>
+      </a>
+      <a id="metro" href="gi/metro/compare.html" data-src="gi/metro/compare.html">
+        <span class="t">Metro 적용 · GPU 실측</span>
+        <span class="d">실제 레벨에 적용하고 프레임 시간 측정</span>
+      </a>
+      <a id="metro-quality" href="gi/metro_quality/compare.html" data-src="gi/metro_quality/compare.html">
+        <span class="t">Metro · 고품질 재베이크</span>
+        <span class="d">조명 전달을 수정한 불투명 재질 결과</span>
+      </a>
+
+    </nav>
+
+    <div class="lab-view">
+      <div class="lab-bar">
+        <span class="now" id="now"></span>
+        <a id="open" href="" target="_blank" rel="noopener">새 창으로 열기 ↗</a>
+      </div>
+      <iframe id="view" title="선택한 자료"></iframe>
+    </div>
+
+  </div>
+</div>
+
+<script>
+document.body.classList.remove('no-js');
+
+const items = [...document.querySelectorAll('#list a')];
+const view = document.getElementById('view');
+
+function show(item, push) {
+  items.forEach(a => a.setAttribute('aria-current', String(a === item)));
+  view.src = item.dataset.src;
+  document.getElementById('open').href = item.dataset.src;
+  document.getElementById('now').textContent = item.querySelector('.t').textContent;
+  if (push && location.hash !== '#' + item.id) history.pushState(null, '', '#' + item.id);
+}
+
+function fromHash() {
+  show(items.find(a => a.id === location.hash.slice(1)) || items[0], false);
+}
+
+items.forEach(a => a.addEventListener('click', e => { e.preventDefault(); show(a, true); }));
+addEventListener('popstate', fromHash);
+fromHash();
+</script>
+
+</body>
+</html>

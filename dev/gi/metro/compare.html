@@ -1,0 +1,24 @@
+<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Metro · 빠른 GI 실측 비교</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#121719;color:#eef2ef;font:16px/1.6 system-ui}main{max-width:1320px;margin:auto;padding:26px}h1{font-size:30px;margin:4px 0}p{color:#bdc9c4}.warning{border-left:3px solid #dcb976;padding-left:14px}nav{display:flex;gap:10px;margin:20px 0;flex-wrap:wrap}button{padding:10px 18px;background:#26352e;color:#edf7f1;border:1px solid #60766a;border-radius:5px;cursor:pointer}button[aria-pressed=true]{background:#c4e9d6;color:#173023}.labels{display:flex;justify-content:space-between}.frame{position:relative;aspect-ratio:16/9;background:#000}.frame img{position:absolute;width:100%;height:100%}#right{clip-path:inset(0 0 0 50%)}input{width:100%;accent-color:#c4e9d6}table{border-collapse:collapse;width:100%;max-width:700px}th,td{padding:8px 14px;border-bottom:1px solid #34443c;text-align:left}a{color:#c4e9d6}
+</style><main><h1>Metro에 빠른 GI를 적용했습니다.</h1>
+<p>정적 메시 67개 · 0.5m / 32샘플 · 라이트맵 625,980픽셀<br>Cycles 작업 77.5초 · 적용용 재준비·저장 13.6초 · 라이트맵 비압축 데이터 9.55 MiB</p>
+<p class="warning">근사 비교본입니다. 게임 재질은 유지하지만 간접광 계산은 단순화했습니다. 투명·특수 재질 메시 18개는 광 전달 계산에서 제외했습니다. 원본 레벨에는 적용하지 않았습니다.</p>
+<nav><button data-view="1" aria-pressed="true">대합실</button><button data-view="2" aria-pressed="false">하층 통로</button><button id="control" aria-pressed="false">원본 재질 보존 검사</button></nav>
+<div class="labels"><span>원본 · 기존 GI 제외</span><span id="rightLabel">커스텀 GI 추가</span></div>
+<div class="frame"><img id="left" src="before_1.png" alt="원본"><img id="right" src="after_1.png" alt="커스텀 GI"></div>
+<input id="split" type="range" min="0" max="100" value="50" aria-label="전후 경계">
+<p>벽·바닥의 어두운 부분이 조금 밝아집니다. 이 설정에서 변화는 크지 않습니다. 재질 보존 검사는 GI를 0으로 둔 추가 패스와 원본을 비교합니다.</p>
+<h2>뷰포트 GPU 시간</h2><table><thead><tr><th>시점</th><th>원본</th><th>GI 적용</th><th>차이</th></tr></thead><tbody><tr><td>대합실</td><td>1.45 ms</td><td>1.54 ms</td><td>+0.09 ms</td></tr><tr><td>하층 통로</td><td>1.46 ms</td><td>1.55 ms</td><td>+0.08 ms</td></tr></tbody></table>
+<p>GTX 1660 Ti · 1280×720 · TAA · FPS 제한 없음. 준비 후 교대 측정 2회의 중앙값 평균입니다. 작은 차이는 실행 편차를 포함합니다. 캐릭터·게임 로직을 제외한 배경 비교로, 실제 플레이 FPS가 아닙니다.</p>
+<p>원본 재질 위에 GI를 추가 패스로 그려 드로우 비용이 늘어납니다. 제작용으로 확정하려면 정확한 재질 전달과 패스 통합이 필요합니다.</p>
+<a href="README.md">조건·제약</a> · <a href="metrics.json">원시 측정값</a></main>
+<script>
+let view=1,control=false;
+const left=document.querySelector('#left'),right=document.querySelector('#right');
+function update(){left.src='before_'+view+'.png';right.src=(control?'material_control_':'after_')+view+'.png';document.querySelector('#rightLabel').textContent=control?'원본 재질 + GI 0 대조':'커스텀 GI 추가';}
+document.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>{view=Number(b.dataset.view);document.querySelectorAll('[data-view]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));update();});
+document.querySelector('#control').onclick=function(){control=!control;this.setAttribute('aria-pressed',String(control));update();};
+document.querySelector('#split').oninput=function(){right.style.clipPath='inset(0 0 0 '+this.value+'%)';};
+</script></html>

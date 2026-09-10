@@ -1,0 +1,25 @@
+<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Metro · 불투명 재질 GI</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#111719;color:#eef3f0;font:16px/1.6 system-ui}main{max-width:1440px;margin:auto;padding:24px}h1{font-size:28px;margin:0}p{color:#b7c6bf}nav{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}button{padding:9px 17px;border:1px solid #566f60;border-radius:5px;background:#23342b;color:#eef3f0;cursor:pointer}button[aria-pressed=true]{background:#c3e7d2;color:#192b21}.frame{position:relative;aspect-ratio:16/9;background:#080a09}.frame img{position:absolute;width:100%;height:100%}#right{clip-path:inset(0 0 0 50%)}.labels{display:flex;justify-content:space-between;margin:8px 0}input{width:100%;accent-color:#c3e7d2}a{color:#c3e7d2}
+</style><main><h1>Metro · 불투명 재질 GI</h1>
+<p>투명·특수 셰이더 제외 · 실제 표면색과 발광 반영 · 0.2m / 256샘플</p>
+<nav><button data-view="1" aria-pressed="true">대합실</button><button data-view="2" aria-pressed="false">하층 통로</button><button id="previous" aria-pressed="false">이전 근사 결과와 비교</button><button id="full">새 결과만 보기</button></nav>
+<div class="labels"><span id="leftLabel">GI 적용 전</span><span>고품질 GI 적용</span></div>
+<div class="frame"><img id="left" src="before_1.png" alt="적용 전"><img id="right" src="after_1.png" alt="고품질 GI 적용"></div>
+<input id="split" type="range" min="0" max="100" value="50" aria-label="비교 경계">
+<p>같은 0.2m·256샘플에서 조명 전달만 수정했습니다. 하층 통로의 GI로 늘어난 평균 RGB 밝기는 255단계 기준 약 1.9 → 11.2입니다. 벽과 천장을 비교하세요.</p>
+<a href="README.md">작업 기록</a> · <a href="metrics.json">베이크 결과</a></main>
+<script>
+let view=2,previous=true;
+const left=document.querySelector('#left'),right=document.querySelector('#right'),split=document.querySelector('#split');
+function update(){left.src=(previous?'before_fix_after_':'before_')+view+'.png';right.src='after_'+view+'.png';document.querySelector('#leftLabel').textContent=previous?'조명 전달 수정 전':'GI 적용 전';}
+document.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>{view=Number(b.dataset.view);document.querySelectorAll('[data-view]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));update();});
+document.querySelector('#previous').onclick=function(){previous=!previous;this.setAttribute('aria-pressed',String(previous));update();};
+split.oninput=()=>right.style.clipPath='inset(0 0 0 '+split.value+'%)';
+document.querySelector('#full').onclick=()=>{split.value=0;split.oninput();};
+document.querySelector('#previous').textContent='조명 전달 수정 전과 비교';
+document.querySelector('#previous').setAttribute('aria-pressed','true');
+document.querySelectorAll('[data-view]').forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.view)===view)));
+update();
+</script></html>

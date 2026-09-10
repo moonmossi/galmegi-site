@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Galmegi / 갈매기</title>
-<meta name="description" content="부산 근교 가상도시 포산시를 배경으로 한 조직 액션 게임. 개발 중.">
+<meta name="description" content="부산 근교의 가상도시 포산시를 무대로 한 3D 비트엠업 액션 게임. 1인 개발 중.">
 <meta property="og:title" content="Galmegi / 갈매기">
-<meta property="og:description" content="부산 근교 가상도시 포산시를 배경으로 한 조직 액션 게임. 개발 중.">
+<meta property="og:description" content="부산 근교의 가상도시 포산시를 무대로 한 3D 비트엠업 액션 게임. 1인 개발 중.">
 <meta property="og:type" content="website">
 <!-- 대표 이미지가 정해지면 아래 주석을 풀고 파일명을 넣을 것 (SNS 공유 썸네일)
 <meta property="og:image" content="https://moonmossi.github.io/galmegi-site/img/hero.webp"> -->
@@ -24,7 +24,7 @@
     <span class="brand">GALMEGI</span>
     <a href="index.html" aria-current="page"><span class="ko">소개</span><span class="en">About</span></a>
     <a href="devlog.html"><span class="ko">개발일지</span><span class="en">Devlog</span></a>
-    <a href="gi-comparison/index.html"><span class="ko">GI 비교</span><span class="en">GI Comparison</span></a>
+    <a href="dev/index.html"><span class="ko">개발 상세</span><span class="en">Dev Details</span></a>
   </nav>
 
   <header class="hero">
@@ -33,8 +33,8 @@
 
     <!-- 로그라인 초안. 문구는 다듬어 쓸 것. -->
     <p class="logline">
-      <span class="ko">부산 근교 포산시. 조직 3년차 행동대장, 강태보의 이야기.</span>
-      <span class="en">Pusan City, on the outskirts of Busan. Three years in the organization — the story of Taebo Kang.</span>
+      <span class="ko">재개발 펜스가 올라가는 부청마을. 조직 3년차 행동대장 강태보는 오늘도 수금과 뒤처리를 맡는다.</span>
+      <span class="en">Bucheong Village, where the redevelopment fences are going up. Taebo Kang, three years an enforcer, spends another day on collections and cleanup.</span>
     </p>
 
     <p class="status">
@@ -48,19 +48,25 @@
     <h2><span class="ko">시놉시스</span><span class="en">Synopsis</span></h2>
     <p>
       <span class="ko"><strong>갈매기</strong>는 부산 근교의 가상도시 <strong>포산시</strong>를 무대로 한 3D 비트엠업 액션 게임입니다.
-        조직 3년차 행동대장 강태보. 재개발 펜스가 올라가는 부청마을에서 수금과 다툼, 뒤처리를 반복하는 그는 경찰 카드를 품고 경찰 행세까지 하며 도시를 누빕니다.</span>
+        조직 3년차 행동대장 강태보는 재개발이 시작된 부청마을에서 수금과 다툼, 뒤처리를 맡으며 하루를 보냅니다.
+        그리고 그의 주머니에는 경찰 카드가 한 장 들어 있습니다.</span>
       <span class="en"><strong>Galmegi</strong> is a 3D beat ’em up set in <strong>Pusan City</strong>, a fictional city on the outskirts of Busan.
-        Taebo Kang is a gang enforcer three years into the organization. As redevelopment fences rise around Bucheong Village, he handles collections, fights, and cleanup, roaming the city with a police ID and passing himself off as an officer.</span>
+        Taebo Kang, three years an enforcer, spends his days on collections, fights, and cleanup in Bucheong Village, where redevelopment has just begun.
+        And in his pocket, he carries a police ID.</span>
     </p>
     <p>
-      <span class="ko">함성이 쏟아지는 야구장부터 담배와 소주를 들고 들어선 대예배당, 광안대교의 불빛과 폭죽이 번지는 백사장까지.
-        강렬한 폭력과 야성적인 액션, 망나니의 일상과 밤바다의 낭만이 한 도시에 뒤섞입니다. 싸움에서 생포한 조직원을 부하로 거두고 전투를 지휘하며, 자신만의 세력을 넓혀갑니다.</span>
-      <span class="en">From a stadium roaring with fans to a grand sanctuary entered with cigarettes and soju, and a beach lit by Gwangandaegyo Bridge and fireworks.
-        Intense violence, feral action, reckless living, and seaside romance share one city. Take captured gang members into your crew, direct their battles, and build your own power.</span>
+      <span class="ko">경찰을 사칭한 채 도시를 오가는 동안, 함성이 쏟아지는 야구장과 담배 연기가 스미는 대예배당,
+        광안대교의 불빛이 닿는 백사장이 차례로 무대가 됩니다. 폭력과 망나니의 일상, 그리고 밤바다가 같은 도시 안에 놓여 있습니다.</span>
+      <span class="en">Passing himself off as an officer, he moves through a stadium roaring with fans, a grand sanctuary filling with cigarette smoke,
+        and a beach touched by the lights of Gwangandaegyo Bridge. Violence, reckless living, and the night sea all sit inside the same city.</span>
     </p>
     <p>
-      <span class="ko">1인 개발 중이며, 데모 버전은 부청마을과 부청1가 스튜디오를 중심으로 준비하고 있습니다.</span>
-      <span class="en">Solo-developed. The demo build centers on Bucheong Village and the Bucheong 1-ga studio.</span>
+      <span class="ko">싸움에서 생포한 상대는 부하가 됩니다. 그들을 전투에 파견하거나 직접 지휘하면서, 포산시 안에서 자신의 세력을 넓혀갑니다.</span>
+      <span class="en">Anyone taken alive in a fight joins your crew. Dispatch them into battle or command them yourself, and expand your own power within Pusan City.</span>
+    </p>
+    <p>
+      <span class="ko">1인 개발로 제작하고 있습니다. 데모 버전은 부청마을과 부청1가 스튜디오를 중심으로 준비 중입니다.</span>
+      <span class="en">Developed by one person. The demo build is being prepared around Bucheong Village and the Bucheong 1-ga studio.</span>
     </p>
   </section>
 
@@ -69,34 +75,46 @@
     <h2><span class="ko">특장점</span><span class="en">Features</span></h2>
     <ul class="features">
       <li>
-        <h3><span class="ko">야성적인 3D 비트엠업</span><span class="en">A feral 3D beat ’em up</span></h3>
-        <p><span class="ko">강렬한 폭력과 야성미 넘치는 액션. 대시와 점프로 전장을 날아다니고, 3D 공간의 고저차를 이용해 거칠게 몰아붙입니다.</span>
-           <span class="en">Intense violence and feral action. Dash and jump across the battlefield, using the heights and drops of a 3D world to keep the pressure on.</span></p>
+        <h3><span class="ko">높이를 쓰는 3D 비트엠업</span><span class="en">A 3D beat ’em up that uses height</span></h3>
+        <p><span class="ko">대시와 점프로 거리를 좁히고, 계단과 옥상, 축대의 높이 차를 이용해 상대를 몰아붙입니다.
+             평면 위의 난투가 아니라 지형을 읽고 싸우는 액션을 목표로 하고 있습니다.</span>
+           <span class="en">Close the distance with dashes and jumps, and press your opponent using the height of stairs, rooftops, and retaining walls.
+             The aim is combat that reads the terrain, rather than a brawl on a flat plane.</span></p>
       </li>
       <li>
-        <h3><span class="ko">경찰 카드를 든 조직원</span><span class="en">A gangster with a police ID</span></h3>
-        <p><span class="ko">주인공 강태보는 경찰 카드를 가지고 다니며 경찰을 사칭합니다. 조직의 행동대장이 경찰 행세까지 하는 포산시의 무법 일상.</span>
-           <span class="en">Taebo Kang carries a police ID and impersonates an officer. In Pusan City, a gang enforcer can play cop, too.</span></p>
+        <h3><span class="ko">경찰 카드를 가진 조직원</span><span class="en">An enforcer with a police ID</span></h3>
+        <p><span class="ko">강태보는 경찰 카드를 가지고 다니며 경찰을 사칭합니다.
+             조직의 행동대장이 경찰 행세로 거리를 오가는, 포산시의 무법한 일상을 그립니다.</span>
+           <span class="en">Taebo Kang carries a police ID and passes himself off as an officer.
+             The game depicts the lawless ordinary life of Pusan City, where a gang enforcer can walk the streets playing cop.</span></p>
       </li>
       <li>
-        <h3><span class="ko">야구장 훌리건 시뮬레이터</span><span class="en">Baseball stadium hooligan simulator</span></h3>
-        <p><span class="ko">현장감 넘치는 관중의 함성 속으로 뛰어듭니다. 낮과 밤에 따라 풍경과 음향이 달라지는 야구장. 미션을 클리어한 뒤에는 자유롭게 드나들며 보물찾기와 사람찾기를 즐깁니다.</span>
-           <span class="en">Step into the roar of the crowd. The stadium has distinct daytime and nighttime scenery and sound. After clearing its mission, return freely to hunt for treasure and search for people.</span></p>
+        <h3><span class="ko">야구장, 낮과 밤</span><span class="en">The stadium, day and night</span></h3>
+        <p><span class="ko">관중의 함성 한복판으로 뛰어듭니다. 시간대에 따라 풍경과 음향이 달라지며,
+             미션을 마친 뒤에도 자유롭게 드나들며 보물찾기와 사람찾기를 이어갈 수 있습니다.</span>
+           <span class="en">Step into the middle of the crowd’s roar. Scenery and sound change with the time of day,
+             and once the mission is over you can return freely to keep hunting for treasure and searching for people.</span></p>
       </li>
       <li>
-        <h3><span class="ko">대예배당의 망나니</span><span class="en">A rascal in the sanctuary</span></h3>
-        <p><span class="ko">기독교 대예배당에서 담배를 피우고 소주를 깝니다. 경건한 공간 한복판에서 벌이는 거리낌 없는 망나니 체험.</span>
-           <span class="en">Light a cigarette and crack open a bottle of soju in a grand Christian sanctuary. Act like an unrepentant rascal in the middle of a sacred space.</span></p>
+        <h3><span class="ko">대예배당에서의 하루</span><span class="en">A day in the sanctuary</span></h3>
+        <p><span class="ko">기독교 대예배당 한복판에서 담배를 피우고 소주를 깝니다.
+             해서는 안 될 일을 굳이 해볼 수 있는 장소로 만들었습니다.</span>
+           <span class="en">Light a cigarette and crack open a bottle of soju in the middle of a grand Christian sanctuary.
+             We built it as a place where you can go out of your way to do what you are not supposed to do.</span></p>
       </li>
       <li>
-        <h3><span class="ko">광안대교 아래, 밤바다</span><span class="en">A night by Gwangandaegyo Bridge</span></h3>
-        <p><span class="ko">광안대교의 야경, 백사장, 밤하늘을 수놓는 폭죽. 광안대교의 불빛 아래에서 미녀와 낭만 넘치는 데이트를 즐기세요.</span>
-           <span class="en">The lights of Gwangandaegyo Bridge, a sandy beach, and fireworks across the night sky. Enjoy a romantic date with a beautiful woman beneath the lights of Gwangandaegyo Bridge.</span></p>
+        <h3><span class="ko">광안대교의 밤</span><span class="en">A night beneath Gwangandaegyo</span></h3>
+        <p><span class="ko">다리의 야경과 백사장, 밤하늘에 번지는 폭죽.
+             그 불빛 아래에서의 데이트가 낮 동안의 도시와는 다른 얼굴을 보여줍니다.</span>
+           <span class="en">The bridge at night, the sand, and fireworks spreading across the sky.
+             A date beneath those lights shows a different face of the city than the one you see by day.</span></p>
       </li>
       <li>
-        <h3><span class="ko">생포에서 세력 확장까지</span><span class="en">Capture, command, expand</span></h3>
-        <p><span class="ko">상대 조직원을 생포해 부하로 거두고, 전투에 파견하거나 직접 감독합니다. 부하 조직을 운영하며 세력을 넓히는 경영 시뮬레이션.</span>
-           <span class="en">Capture rival gang members and bring them into your crew. Dispatch them into combat or supervise them yourself, managing your organization as its influence grows.</span></p>
+        <h3><span class="ko">생포와 세력 확장</span><span class="en">Capture and expansion</span></h3>
+        <p><span class="ko">쓰러뜨린 상대를 생포해 부하로 거둡니다.
+             전투에 파견하거나 직접 지휘하며 조직을 운영하는, 경영 시뮬레이션 요소가 액션 위에 얹힙니다.</span>
+           <span class="en">Take the ones you knock down alive and bring them into your crew.
+             A management layer sits on top of the action: dispatch them into battle or command them yourself as your organization grows.</span></p>
       </li>
     </ul>
   </section>
@@ -140,8 +158,8 @@
         <a href="https://x.com/moonmossi">@moonmossi</a>
       </li>
       <li>
-        <span class="label">YOUTUBE</span>
-        <span class="pending"><span class="ko">준비 중</span><span class="en">Coming soon</span></span>
+        <span class="label"><img class="link-icon" src="img/youtube.svg" width="22" height="22" alt="">YOUTUBE</span>
+        <a href="https://www.youtube.com/@GALMEGI_Studio">@GALMEGI_Studio</a>
       </li>
     </ul>
   </section>

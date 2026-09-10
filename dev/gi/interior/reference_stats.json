@@ -1,0 +1,10 @@
+{
+  "engine": "CYCLES",
+  "samples": 512,
+  "vertices": 2008,
+  "triangles": 1356,
+  "camera_fov_vertical": 65.0,
+  "view_transform": "Standard",
+  "exposure": 0,
+  "denoise": false
+}

@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>커스텀 GI · 실제 베이크 비교</title>
+<style>
+body{margin:0;background:#101217;color:#edf1f8;font:16px system-ui;padding:28px;max-width:1100px;margin:auto}h1{font-size:24px}p{color:#b7c1ce;line-height:1.6}.compare{position:relative;max-width:960px;aspect-ratio:4/3;background:#080808}.compare img{position:absolute;width:100%;height:100%;object-fit:contain}.compare #after{clip-path:inset(0 0 0 50%)}input{width:100%;max-width:960px;accent-color:#80b6ff}label{display:block;margin:14px 0}span{color:#80b6ff}.labels{display:flex;justify-content:space-between;max-width:960px;margin-bottom:8px}details{margin-top:20px}a{color:#80b6ff}
+</style>
+<h1>버튼 한 번으로 구운 커스텀 GI</h1>
+<p>동일한 카메라·직접광 조건입니다. 구체 아래와 상자 뒤의 그림자에서 간접광 차이를 확인하세요.</p>
+<div class="labels"><b>적용 전</b><b>Cycles 간접광 적용 후</b></div>
+<div class="compare"><img src="before.png" alt="간접광 적용 전"><img id="after" src="after.png" alt="간접광 적용 후"></div>
+<label>비교 경계 <input type="range" min="0" max="100" value="50" aria-label="적용 전후 비교 경계" oninput="document.querySelector('#after').style.clipPath='inset(0 0 0 '+this.value+'%)'"></label>
+<p>검증 씬: 배경 6개 · 이동 물체 1개 · 프로브 90개. 직접광 2.5, 간접광 배율 2.0, 64 samples. 성능 측정이나 CITY 실전 검증은 포함하지 않습니다.</p>
+<details><summary>현재 지원 범위</summary><p>작은 구역의 불투명 기본 재질·컬러 텍스처·CSG를 지원합니다. CITY의 도로/물 셰이더, 하늘 환경, 실제 게임 캐릭터 연결은 아직 지원하지 않습니다. 프로브는 여섯 방향의 간접광을 보간하며 벽 너머 빛샘 제어는 없습니다.</p></details>
+<p><a href="moving_blue.png">이동 물체 위치 변경</a> · <a href="restored.png">원복 화면</a></p>
+</html>

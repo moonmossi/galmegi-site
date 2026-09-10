@@ -1,0 +1,23 @@
+{
+  "full": {
+    "godot_mean_linear_rgb": 0.017346883192658424,
+    "cycles_mean_linear_rgb": 0.018756935372948647,
+    "median_godot_over_cycles_on_lit_pixels": 0.9355817437171936,
+    "linear_rmse": 0.012043582275509834,
+    "mask_pixels": 945576
+  },
+  "direct": {
+    "godot_mean_linear_rgb": 0.008458638563752174,
+    "cycles_mean_linear_rgb": 0.007927026599645615,
+    "median_godot_over_cycles_on_lit_pixels": 1.089132308959961,
+    "linear_rmse": 0.011038918048143387,
+    "mask_pixels": 57270
+  },
+  "indirect": {
+    "godot_mean_linear_rgb": 0.009006539359688759,
+    "cycles_mean_linear_rgb": 0.00896662101149559,
+    "median_godot_over_cycles_on_lit_pixels": 1.000191330909729,
+    "linear_rmse": 0.0025269535835832357,
+    "mask_pixels": 935905
+  }
+}
