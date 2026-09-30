@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>셰이더 실험실 — Galmegi</title>
+<meta name="description" content="60개 셰이더 예제를 보고, 직접 바꾸고, 원리를 이해하는 갈메기 실험실. 원본 텍스처와 마스크, 80개 조절값을 브라우저에서 살펴보세요.">
+<link rel="stylesheet" href="../style.css"><link rel="stylesheet" href="lab.css">
+</head>
+<body>
+<div class="wrap lab-wrap">
+<nav class="site-nav" aria-label="사이트 메뉴">
+<a class="brand" href="../index.html">GALMEGI</a><a href="../index.html">소개</a><a href="../devlog.html">개발일지</a><a href="../benchmark/index.html">벤치마크</a><a href="index.html" aria-current="page">셰이더 실험실</a>
+</nav>
+<main>
+<header class="lab-header"><p class="eyebrow">보고 · 바꾸고 · 이해하기</p><h1>셰이더 실험실</h1><p>작은 텍스처 한 장이 불꽃과 물결, 돌과 빛이 되는 과정.<br>60개 예제에서 원리를 읽고, 값을 바꾸며 차이를 확인하세요.</p><p class="counts">60개 예제 <span>·</span> 42개 조작형 실험 <span>·</span> 80개 조절값</p></header>
+<div class="player-toolbar"><span id="player-message" role="status">시작하면 목차가 열립니다.</span><div><button id="fullscreen" type="button" hidden>전체화면</button><a href="player/index.html" target="_blank" rel="noopener">실험실만 열기 ↗</a></div></div>
+<div class="player-shell" id="player-shell">
+<div class="cover" id="cover"><img src="preview.png" alt="노이즈 원본과 임계값 마스크를 비교하고 슬라이더로 조절하는 예제 화면" width="1152" height="648"><div class="start-panel"><button id="launch" type="button">실험실 시작</button><p>목차 · 회전 뷰 · 자료 · 해설 · 실제 코드</p></div></div>
+<iframe id="player" title="갈메기 셰이더 실험실: 60개 실시간 예제" allow="autoplay; fullscreen" allowfullscreen hidden></iframe>
+</div>
+<p class="controls">목차 열기 <kbd>F1</kbd> · 왼쪽 드래그 회전 · 오른쪽 드래그 이동 · 휠 확대 · 화면이 작으면 전체화면으로 보세요.</p>
+<section class="guide"><h2>하나씩 바꾸면 보입니다</h2><div class="guide-grid"><article><h3>01. 먼저 차이를 보기</h3><p>목차에서 번호나 이름으로 찾으세요. 왼쪽 비교 기준과 오른쪽 완성 효과를 보고, 해설에서 그 차이가 생기는 이유를 읽습니다.</p></article><article><h3>02. 값을 직접 바꾸기</h3><p>슬라이더 하나씩 움직여 결과를 예상해 보세요. 선 두께, 반복 수, 소멸 기준을 바꾼 뒤 ‘값 초기화’로 처음과 비교할 수 있습니다.</p></article><article><h3>03. 만드는 과정 보기</h3><p>‘자료·관찰’에서 원본 텍스처를, 신규 37~60에서는 ‘입력 → 마스크 → 완성’을 보세요. 실제 코드 탭으로 계산까지 이어집니다.</p></article></div></section>
+<p class="credit">입력 이미지: Kenney Development Essentials (CC0). 예제·해설: 갈메기 개발 실험실. Godot Web 실행본. <a href="credits.html">이용 고지</a></p>
+</main></div><script src="lab.js"></script>
+</body></html>
