@@ -3,6 +3,6 @@
 게임 **Galmegi(갈매기)** 홈페이지. → https://moonmossi.github.io/galmegi/
 
 
-## 셰이더 실험실
+## VFX 제작 실험실
 
-`shader-lab/index.html` — 60개 예제, 42개 조작형 실험, 80개 슬라이더. `player/`는 Godot 4.8.dev5 단일 스레드 Web 내보내기로 GitHub Pages에서 실행됩니다. 게임 본편이 아닌 독립 예제 프로젝트입니다. 공개 주소: https://moonmossi.github.io/galmegi-site/shader-lab/
+`shader-lab/`는 실제 가이드 기반 8개 3D 효과를 담은 Godot 웹 실행본입니다. 24개 레이어 토글, 시간 탐색, 16개 조절값, 제작 해설·코드·원문 링크를 제공합니다. 기존 60개 패턴 데모는 공개 실행본에서 교체했습니다. 웹 실행은 WebGL 2가 필요합니다.

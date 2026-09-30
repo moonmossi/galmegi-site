@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
-		<title>Galmegi 셰이더 실험실</title>
+		<title>Galmegi VFX 제작 실험실</title>
 		<style>
 html, body, #canvas {
 	margin: 0;
@@ -109,24 +109,21 @@ body {
 
 		<script src="index.js"></script>
 		<script>
-const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":19699364,"index.wasm":38501834},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4};
+const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":19172456,"index.wasm":38501834},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4};
 const GODOT_THREADS_ENABLED = false;
-const labSmoke = new URLSearchParams(location.search).has('smoke');
-GODOT_CONFIG.ensureCrossOriginIsolationHeaders = false;
-if (labSmoke) GODOT_CONFIG.args = ['--', '--web-smoke'];
-const labErrors = [];
-if (labSmoke) {
- const status = document.createElement('div'); status.id = 'lab-smoke'; status.setAttribute('role','status');
- status.style.cssText = 'position:fixed;top:0;left:0;background:#111;color:#fff;padding:6px;font:14px monospace;z-index:9999;pointer-events:none';
- status.textContent = 'WEB_SMOKE_LOADING'; document.body.appendChild(status);
-}
-window.labSmokeDone = (passed, message) => {
- const status = document.getElementById('lab-smoke');
- if (status) status.textContent = (passed && labErrors.length === 0 ? 'WEB_SMOKE_PASS: ' : 'WEB_SMOKE_FAIL: ') + message + ' | errors=' + labErrors.length + (labErrors.length ? ' ' + labErrors.join(' | ').slice(0,800) : '');
-};
-GODOT_CONFIG.onPrint = (text) => { console.log(text); if (labSmoke && String(text).startsWith('WEB_PAGE_PASS')) document.getElementById('lab-smoke').textContent = text; };
-GODOT_CONFIG.onPrintError = (text) => { console.error(text); if (/ERROR|Error|error|Shader compilation failed/.test(String(text))) labErrors.push(String(text)); };
-
+// VFX_BOOT_START
+GODOT_CONFIG.ensureCrossOriginIsolationHeaders=false;
+const query=new URLSearchParams(location.search), smoke=query.has('smoke'), errors=[];
+const args=[];
+if(smoke) args.push('--web-smoke');
+const lesson=query.get('lesson');
+if(['explosion','fire','slash','trail','lightning','portal','splash','shield'].includes(lesson)) args.push('--lesson='+lesson);
+if(args.length) GODOT_CONFIG.args=['--',...args];
+if(smoke){const status=document.createElement('div');status.id='lab-smoke';status.setAttribute('role','status');status.style.cssText='position:fixed;top:0;left:0;background:#111;color:#fff;padding:6px;font:14px monospace;z-index:9999;pointer-events:none';status.textContent='WEB_SMOKE_LOADING';document.body.appendChild(status);}
+window.labSmokeDone=(passed,message)=>{const status=document.getElementById('lab-smoke');if(status)status.textContent=(passed&&!errors.length?'WEB_SMOKE_PASS: ':'WEB_SMOKE_FAIL: ')+message+' | errors='+errors.length+(errors.length?' '+errors.join(' | ').slice(0,600):'');};
+GODOT_CONFIG.onPrint=text=>{console.log(text);if(smoke&&String(text).startsWith('WEB_PAGE_PASS'))document.getElementById('lab-smoke').textContent=text;};
+GODOT_CONFIG.onPrintError=text=>{console.error(text);if(/ERROR|Error|error|Shader compilation failed/.test(String(text)))errors.push(String(text));};
+// VFX_BOOT_END
 const engine = new Engine(GODOT_CONFIG);
 
 (function () {
