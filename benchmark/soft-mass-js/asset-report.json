@@ -2,91 +2,67 @@
 	"animations": [
 		{
 			"duration": 11.333333,
-			"keys": 117134,
+			"keys": 39556,
 			"name": "act_dance_janky_rig",
-			"tracks": 174
+			"tracks": 116
 		},
 		{
-			"duration": 6.9166665,
-			"keys": 71139,
+			"duration": 6.916667,
+			"keys": 24244,
 			"name": "move_field_idle_feminine_LOOP_rig",
-			"tracks": 174
+			"tracks": 116
 		},
 		{
 			"duration": 0.75,
-			"keys": 7869,
+			"keys": 2784,
 			"name": "move_run_feminine_LOOP_rig",
-			"tracks": 174
+			"tracks": 116
 		},
 		{
 			"duration": 3.7,
-			"keys": 38136,
+			"keys": 12992,
 			"name": "move_walk_swinging_LOOP_rig",
-			"tracks": 174
+			"tracks": 116
 		}
 	],
 	"materials": {
-		"EYES_002_0": {
+		"photo_body": {
 			"cuts": 4,
 			"height": 1024,
-			"saturation": 0.70000003325,
-			"steepness": 4.0000001425,
+			"saturation": 0.7,
+			"steepness": 4.0,
 			"width": 1024
 		},
-		"Retopo_node_0_001_0": {
+		"photo_face": {
 			"cuts": 4,
-			"height": 1024,
-			"saturation": 0.70000003325,
-			"steepness": 4.0000001425,
-			"width": 1024
+			"height": 2048,
+			"saturation": 0.7,
+			"steepness": 4.0,
+			"width": 2048
 		},
-		"Retopo_node_0_002_0": {
+		"photo_hair": {
 			"cuts": 4,
 			"height": 1024,
-			"saturation": 0.70000003325,
-			"steepness": 4.0000001425,
-			"width": 1024
-		},
-		"hair2_001_0": {
-			"cuts": 4,
-			"height": 1024,
-			"saturation": 0.70000003325,
-			"steepness": 4.0000001425,
-			"width": 1024
-		},
-		"hair_front_001_0": {
-			"cuts": 4,
-			"height": 1024,
-			"saturation": 0.70000003325,
-			"steepness": 4.0000001425,
+			"saturation": 0.7,
+			"steepness": 4.0,
 			"width": 1024
 		}
 	},
 	"meshes": [
 		{
-			"indices": 5952,
-			"name": "EYES_002",
-			"vertices": 3974
+			"indices": 17208,
+			"name": "photo_body",
+			"vertices": 3620
 		},
 		{
-			"indices": 282,
-			"name": "hair_front_001",
-			"vertices": 110
+			"indices": 8220,
+			"name": "photo_face",
+			"vertices": 2181
 		},
 		{
-			"indices": 4008,
-			"name": "hair2_001",
-			"vertices": 1763
-		},
-		{
-			"indices": 22674,
-			"name": "Retopo_node_0_001",
-			"vertices": 10709
-		},
-		{
-			"indices": 2226,
-			"name": "Retopo_node_0_002",
-			"vertices": 984
+			"indices": 5010,
+			"name": "photo_hair",
+			"vertices": 999
 		}
 	]
 }
